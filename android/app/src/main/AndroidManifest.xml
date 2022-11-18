@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.app_communication_tldr_notifier">
+    package="com.thameezbo.communication_tldr.notifier">
    <application
         android:label="app_communication_tldr_notifier"
         android:name="${applicationName}"

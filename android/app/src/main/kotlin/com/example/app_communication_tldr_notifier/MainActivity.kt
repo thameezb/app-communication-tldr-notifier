@@ -1,4 +1,4 @@
-package com.example.app_communication_tldr_notifier
+package com.thameezbo.communication_tldr.notifier
 
 import io.flutter.embedding.android.FlutterActivity
 
