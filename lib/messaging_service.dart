@@ -11,6 +11,7 @@ class MessagingService {
 
     if (settings.authorizationStatus == AuthorizationStatus.authorized) {
       await _getToken();
+      await _firebaseMessaging.subscribeToTopic('TLDR');
       _registerForegroundMessageHandler();
     }
   }

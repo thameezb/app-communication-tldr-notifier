@@ -7,21 +7,25 @@ import 'firebase_options.dart';
 
 MessagingService _msgService = MessagingService();
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-
-  await _msgService.init();
-  runApp(const MyApp());
-}
-
-/// Top level function to handle incoming messages when the app is in the background
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   print(" --- background message received ---");
   print(message.notification!.title);
   print(message.notification!.body);
 }
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  await _msgService.init();
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
+  runApp(const MyApp());
+}
+
+/// Top level function to handle incoming messages when the app is in the background
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
