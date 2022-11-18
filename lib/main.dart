@@ -1,3 +1,4 @@
+import 'package:app_communication_tldr_notifier/auth_service.dart';
 import 'package:app_communication_tldr_notifier/database_service.dart';
 import 'package:app_communication_tldr_notifier/messaging_service.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -8,6 +9,7 @@ import 'firebase_options.dart';
 
 MessagingService _msgService = MessagingService();
 DBService _dbService = DBService();
+AuthService _authService = AuthService();
 
 String currentState = '';
 
@@ -17,7 +19,9 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
+  await _authService.init();
   await _msgService.init();
+  _dbService.init();
 
   runApp(const MyApp());
 }
