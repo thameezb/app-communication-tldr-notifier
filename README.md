@@ -10,3 +10,11 @@ A Flutter project which creates a simple Android app that:
 ## Why?
 
 Acts as a receiver application to the sender application [app-communication-tldr](https://github.com/thameezb/app-communication-tldr/blob/main/README.md). More info can be found in that repo.
+
+## Screenshots
+
+![Notification](./assets/screenshots/notification.png)
+
+![Solutions Please](./assets/screenshots/solutionsPlease.png)
+
+![Let Me Rant](./assets/screenshots/letMeRant.png)
