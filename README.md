@@ -1,16 +1,12 @@
-# app_communication_tldr_notifier
+# app-communication-tldr-notifier
 
-A new Flutter project.
+A Flutter project which creates a simple Android app that:
 
-## Getting Started
+- Displays the current value stored at key `currentState` in a Firebase Database (that is `currentState`) in a simple widget
+- Sends the user an app notification (FireBase messages) when the value of `currentState` has changed
+  - Is subscribed to a topic `TLDR` and will display all notifications sent to it
+- Makes use of FireBase Auth and enables Anonymous Authentication to the DB
 
-This project is a starting point for a Flutter application.
+## Why?
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Acts as a receiver application to the sender application [app-communication-tldr](https://github.com/thameezb/app-communication-tldr/blob/main/README.md). More info can be found in that repo.
