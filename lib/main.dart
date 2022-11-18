@@ -1,7 +1,6 @@
 import 'package:app_communication_tldr_notifier/database_service.dart';
 import 'package:app_communication_tldr_notifier/messaging_service.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
@@ -12,14 +11,6 @@ DBService _dbService = DBService();
 
 String currentState = '';
 
-Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-
-  _msgService.handleMessage(message);
-}
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -27,7 +18,6 @@ void main() async {
   );
 
   await _msgService.init();
-  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
   runApp(const MyApp());
 }
@@ -58,7 +48,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Future<void> setupInteractedMessage() async {
+  Future<void> handleDBChange() async {
     _dbService.refCurrentState.onValue.listen((DatabaseEvent event) {
       final data = event.snapshot.value as String;
       setState(() {
@@ -73,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     // Run code required to handle interacted messages in an async function
     // as initState() must not be async
-    setupInteractedMessage();
+    handleDBChange();
   }
 
   @override
